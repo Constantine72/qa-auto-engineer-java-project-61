@@ -7,5 +7,3 @@ public class App {
         Cli.runCli();
     }
 }
-//test sonarqube
-//new run

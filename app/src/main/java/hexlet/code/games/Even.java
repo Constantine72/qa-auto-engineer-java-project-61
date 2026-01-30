@@ -22,7 +22,7 @@ public class Even implements GameRound {
 
     @Override
     public String getCorrectAnswer() {
-        return number % 2 = 0 ? "yes" : "no";
+        return number % 2 == 0 ? "yes" : "no";
     }
 
     @Override

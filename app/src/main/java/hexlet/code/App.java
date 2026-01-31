@@ -14,6 +14,7 @@ public class App {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
         System.out.println("0 - Exit");
         String userInput = scanner.next();
 
@@ -22,6 +23,7 @@ public class App {
             case "2" -> Engine.run(new Even());
             case "3" -> Engine.run(new Calc());
             case "4" -> Engine.run(new GCD());
+            case "5" -> Engine.run(new Progression());
             default -> scanner.close();
         }
     }

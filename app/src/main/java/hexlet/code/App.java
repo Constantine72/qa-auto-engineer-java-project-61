@@ -15,6 +15,7 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         String userInput = scanner.next();
 
@@ -24,6 +25,7 @@ public class App {
             case "3" -> Engine.run(new Calc());
             case "4" -> Engine.run(new GCD());
             case "5" -> Engine.run(new Progression());
+            case "6" -> Engine.run(new Prime());
             default -> scanner.close();
         }
     }

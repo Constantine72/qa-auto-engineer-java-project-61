@@ -3,12 +3,13 @@ package hexlet.code.games;
 import hexlet.code.GameRound;
 import java.util.Random;
 
-public class GCD implements GameRound {
+public final class GCD implements GameRound {
 
     private final Random random = new Random();
     private int correctAnswer;
     private int a;
     private int b;
+    private static final int RANDOM_DIGIT = 10;
 
     @Override
     public String getRules() {
@@ -17,12 +18,12 @@ public class GCD implements GameRound {
 
     @Override
     public String getQuestion() {
-        int a = random.nextInt(10) + 1;
-        int b = random.nextInt(10) + 1;
+        int randomNumber1 = random.nextInt(RANDOM_DIGIT) + 1;
+        int randomNumber2 = random.nextInt(RANDOM_DIGIT) + 1;
 
-        correctAnswer = gcd(a, b);
+        correctAnswer = gcd(randomNumber1, randomNumber2);
 
-        return a + " " + b;
+        return randomNumber1 + " " + randomNumber2;
     }
 
     @Override
@@ -37,7 +38,6 @@ public class GCD implements GameRound {
 
         return input.matches("\\d+");
     }
-
     private int gcd(int x, int y) {
     while (y != 0) {
         int temp = x % y;

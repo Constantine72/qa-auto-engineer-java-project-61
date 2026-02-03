@@ -1,7 +1,11 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
 import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Greeting;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -26,7 +30,7 @@ public class App {
             case "4" -> Engine.run(new GCD());
             case "5" -> Engine.run(new Progression());
             case "6" -> Engine.run(new Prime());
-            default -> scanner.close();
+            default -> System.out.println("Unknown user choice " + userInput);
         }
     }
 }

@@ -4,12 +4,15 @@ import hexlet.code.GameRound;
 import java.util.Random;
 
 
-    public class Prime implements GameRound {
+    public final class Prime implements GameRound {
 
         private final Random random = new Random();
 
         private int number;
         private int n;
+
+        private static final int RANDOM_LIMIT = 100;
+        private static final int START_COUNTER = 3;
 
         @Override
         public String getRules() {
@@ -18,7 +21,7 @@ import java.util.Random;
 
         @Override
         public String getQuestion() {
-            number = random.nextInt(100) + 1;
+            number = random.nextInt(RANDOM_LIMIT) + 1;
             return String.valueOf(number);
         }
 
@@ -33,18 +36,18 @@ import java.util.Random;
             return input.equals("yes") || input.equals("no");
         }
 
-        private boolean isPrime(int n) {
-            if (n < 2) {
+        private boolean isPrime(int num) {
+            if (num < 2) {
                 return true;
             }
-            if (n == 2) {
+            if (num == 2) {
                 return true;
             }
-            if (n % 2 == 0) {
+            if (num % 2 == 0) {
                 return false;
             }
-            for (int i = 3; i * i <= n; i += 2) {
-                if (n % i == 0) {
+            for (int i = START_COUNTER; i * i <= num; i += 2) {
+                if (num % i == 0) {
                     return false;
                 }
             }

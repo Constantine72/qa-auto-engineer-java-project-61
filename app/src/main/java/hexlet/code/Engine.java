@@ -1,11 +1,13 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
 import java.util.Scanner;
 
 public class Engine {
 
     public static void run(GameRound game) {
+
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
@@ -13,9 +15,10 @@ public class Engine {
         System.out.println("Hello, " + userName + "!");
         System.out.println(game.getRules());
 
-    int correctCount = 0;
+         final int correctCounter = 3;
+         int correctCount = 0;
 
-    while (correctCount < 3) {
+        while (correctCount < correctCounter) {
 
         String question = game.getQuestion();
         String correctAnswer = game.getCorrectAnswer();
@@ -33,9 +36,9 @@ public class Engine {
         if (userAnswer.equals(correctAnswer)) {
             System.out.println("Correct!");
             correctCount++;
-        }
-        else {
-            System.out.println("'"+ userAnswer + "'"  + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
+        } else {
+            System.out.println("'" + userAnswer + "'"
+                    +  " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
             System.out.println("Let's try again, " + userName);
             return;
         }

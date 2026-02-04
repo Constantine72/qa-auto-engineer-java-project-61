@@ -1,65 +1,70 @@
 package hexlet.code.games;
 
-import hexlet.code.GameRound;
+import hexlet.code.Engine;
 import java.util.Random;
 
-public final class Progression implements GameRound {
+public final class Progression {
 
-    private final Random random = new Random();
-    private int correctAnswer;
+    public static void run() {
 
-    private static final int RANDOM_LIMIT = 5;
-    private static final int RANDOM_LENGTH = 6;
-    private static final int RANDOM_DIGIT = 10;
+        Random random = new Random();
 
-    @Override
-    public String getRules() {
-        return "What number is missing in the progression?";
+
+        final int randomLimit = 5;
+        final int randomLength = 6;
+        final int randomDigit = 10;
+        final int roundDigit = 3;
+
+        String rules = "What number is missing in the progression?";
+
+        String[][] rounds = new String[roundDigit][2];
+
+        for (int i = 0; i < roundDigit; i++) {
+
+            int length = random.nextInt(randomLength) + randomLimit;
+            int start = random.nextInt(randomDigit) + 1;
+            int step = random.nextInt(randomDigit) + 1;
+
+            int hiddenIndex = random.nextInt(length);
+
+            int[] progression = createProgression(length, start, step);
+
+            int correct = progression[hiddenIndex];
+
+            String question = buildQuestion(progression, hiddenIndex);
+            String correctAnswer = String.valueOf(correct);
+
+            rounds[i][0] = question;
+            rounds[i][1] = correctAnswer;
+        }
+        Engine.run(rules, rounds);
     }
 
-    @Override
-    public String getQuestion() {
+    private static int[] createProgression(int length, int start, int step) {
+        int[] result = new int[length];
 
-        int length = random.nextInt(RANDOM_LENGTH) + RANDOM_LIMIT;
-        int start = random.nextInt(RANDOM_DIGIT) + 1;
-        int step = random.nextInt(RANDOM_DIGIT) + 1;
+        for (int i = 0; i < length; i++) {
+            result[i] = start + i * step;
+        }
+        return result;
+    }
 
-        int hiddenIndex = random.nextInt(length);
+    private static String buildQuestion(int[] progression, int hiddenIndex) {
 
-        int[] progression = createProgression(length, start, step);
-
-        correctAnswer = progression[hiddenIndex];
-
-        String question = "";
-
+        String result = "";
         for (int i = 0; i < progression.length; i++) {
+
+
+
             if (i == hiddenIndex) {
-                question += "..";
+                result += "..";
             } else {
-                question += progression[i] + " ";
+                result += progression[i] + " ";
             }
         }
-        return question.trim();
-    }
-    @Override
-    public String getCorrectAnswer() {
-
-        return String.valueOf(correctAnswer);
-    }
-
-    @Override
-    public boolean isValidInput(String input) {
-
-        return input.matches("\\d+");
-    }
-
-    private int[] createProgression(int length, int start, int step) {
-    int[] result = new int[length];
-
-    for (int i = 0; i < length; i++) {
-        result[i] = start + i * step;
-    }
-    return result;
+        return result.trim();
     }
 }
+
+
 

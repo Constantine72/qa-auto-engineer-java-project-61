@@ -1,35 +1,32 @@
 package hexlet.code.games;
 
-import hexlet.code.GameRound;
+import hexlet.code.Engine;
 import java.util.Random;
 
 
-public final class Even implements GameRound {
+public final class Even {
 
-    private final Random random = new Random();
-    private int number;
-    private static final int RANDOM_LIMIT = 90;
-    private static final int RANDOM_START = 10;
+    public static void run() {
 
-    @Override
-    public String getRules() {
-        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    }
-    @Override
-    public String getQuestion() {
-        number = RANDOM_START + random.nextInt(RANDOM_LIMIT);
-        return String.valueOf(number);
-    }
-    @Override
-    public String getCorrectAnswer() {
-        return number % 2 == 0 ? "yes" : "no";
-    }
-    @Override
-    public boolean isValidInput(String input) {
-        return input.equals("yes") || input.equals("no");
+        final int roundDigit = 3;
+        final int roundLimit = 3;
+        final int randomLimit = 100;
+
+        Random random = new Random();
+        String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String[][] rounds = new String[roundLimit][2];
+
+        for (int i = 0; i < roundDigit; i++) {
+            int number = random.nextInt(randomLimit) + 1;
+            String correctAnswer = (number % 2 == 0) ? "yes" : "no";
+
+            rounds[i][0] = String.valueOf(number);
+            rounds[i][1] = correctAnswer;
+        }
+
+        Engine.run(rules, rounds);
     }
 }
-
 
 
 

@@ -1,56 +1,56 @@
 package hexlet.code.games;
 
-import hexlet.code.GameRound;
+import hexlet.code.Engine;
 import java.util.Random;
 
 
-    public final class Prime implements GameRound {
+    public final class Prime {
+        public static void run() {
 
-        private final Random random = new Random();
 
-        private int number;
-        private int n;
+            Random random = new Random();
 
-        private static final int RANDOM_LIMIT = 100;
-        private static final int START_COUNTER = 3;
+            final int randomLimit = 100;
+            final int roundDigit = 3;
 
-        @Override
-        public String getRules() {
-            return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        }
+            String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
-        @Override
-        public String getQuestion() {
-            number = random.nextInt(RANDOM_LIMIT) + 1;
-            return String.valueOf(number);
-        }
+            String[][] rounds = new String[roundDigit][2];
 
-        @Override
-        public String getCorrectAnswer() {
-            return isPrime(number) ? "yes" : "no";
-        }
+            for (int i = 0; i < roundDigit; i++) {
 
-        @Override
-        public boolean isValidInput(String input) {
 
-            return input.equals("yes") || input.equals("no");
-        }
+                int number = random.nextInt(randomLimit) + 1;
 
-        private boolean isPrime(int num) {
-            if (num < 2) {
-                return true;
+
+                boolean prime = isPrime(number);
+
+
+                String question = String.valueOf(number);
+                String correctAnswer = prime ? "yes" : "no";
+
+                rounds[i][0] = question;
+                rounds[i][1] = correctAnswer;
             }
-            if (num == 2) {
-                return true;
-            }
-            if (num % 2 == 0) {
-                return false;
-            }
-            for (int i = START_COUNTER; i * i <= num; i += 2) {
-                if (num % i == 0) {
-                    return false;
+            Engine.run(rules, rounds);
+        }
+        private static boolean isPrime(int num) {
+            final int startCounter = 3;
+
+                    if (num < 2) {
+                        return true;
+                    }
+                    if (num == 2) {
+                        return true;
+                    }
+                    if (num % 2 == 0) {
+                        return false;
+                    }
+                    for (int i = startCounter; i * i <= num; i += 2) {
+                        if (num % i == 0) {
+                            return false;
+                        }
+                    }
+                    return true;
                 }
             }
-                return true;
-            }
-        }

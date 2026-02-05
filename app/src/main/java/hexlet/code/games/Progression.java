@@ -10,52 +10,51 @@ public final class Progression {
 
         Random random = new Random();
 
+        final int roundsCount = 3;
+        final int progressionLength = 10;
+        final int maxStart = 20;
+        final int maxStep = 10;
 
-        final int randomLimit = 5;
-        final int randomLength = 6;
-        final int randomDigit = 10;
-        final int roundDigit = 3;
 
         String rules = "What number is missing in the progression?";
 
-        String[][] rounds = new String[roundDigit][2];
+        String[][] rounds = new String[roundsCount][2];
 
-        for (int i = 0; i < roundDigit; i++) {
+        for (int i = 0; i < roundsCount; i++) {
 
-            int length = random.nextInt(randomLength) + randomLimit;
-            int first = random.nextInt(randomDigit) + 1;
-            int step = random.nextInt(randomDigit) + 1;
+            int first = random.nextInt(maxStart) + 1;
+            int step = random.nextInt(maxStep) + 1;
 
-            int hiddenIndex = random.nextInt(length);
 
-            String[] progression = makeProgression(first, step, length);
+            int hiddenIndex = random.nextInt(progressionLength);
+
+            String[] progression = makeProgression(first, step, progressionLength);
 
             String answer = progression[hiddenIndex];
 
             progression[hiddenIndex] = "..";
 
             String question = String.join(" ", progression);
-            String correctAnswer = String.valueOf(answer);
+
 
             rounds[i][0] = question;
-            rounds[i][1] = correctAnswer;
+            rounds[i][1] = answer;
         }
         Engine.run(rules, rounds);
     }
 
-    private static String[] makeProgression(int length, int first, int step) {
+    private static String[] makeProgression(int first, int step, int progressionLength) {
 
-        String[] progression = new String[length];
+        String[] progression = new String[progressionLength];
+
         int current = first;
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < progressionLength; i++) {
+
             progression[i] = String.valueOf(current);
             current += step;
         }
         return progression;
     }
 }
-
-
-
 

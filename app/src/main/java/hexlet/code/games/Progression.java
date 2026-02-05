@@ -23,17 +23,19 @@ public final class Progression {
         for (int i = 0; i < roundDigit; i++) {
 
             int length = random.nextInt(randomLength) + randomLimit;
-            int start = random.nextInt(randomDigit) + 1;
+            int first = random.nextInt(randomDigit) + 1;
             int step = random.nextInt(randomDigit) + 1;
 
             int hiddenIndex = random.nextInt(length);
 
-            int[] progression = createProgression(length, start, step);
+            String[] progression = makeProgression(first, step, length);
 
-            int correct = progression[hiddenIndex];
+            String answer = progression[hiddenIndex];
 
-            String question = buildQuestion(progression, hiddenIndex);
-            String correctAnswer = String.valueOf(correct);
+            progression[hiddenIndex] = "..";
+
+            String question = String.join(" ", progression);
+            String correctAnswer = String.valueOf(answer);
 
             rounds[i][0] = question;
             rounds[i][1] = correctAnswer;
@@ -41,30 +43,19 @@ public final class Progression {
         Engine.run(rules, rounds);
     }
 
-    private static int[] createProgression(int length, int start, int step) {
-        int[] result = new int[length];
+    private static String[] makeProgression(int length, int first, int step) {
+
+        String[] progression = new String[length];
+        int current = first;
 
         for (int i = 0; i < length; i++) {
-            result[i] = start + i * step;
+            progression[i] = String.valueOf(current);
+            current += step;
         }
-        return result;
-    }
-
-    private static String buildQuestion(int[] progression, int hiddenIndex) {
-
-        String result = "";
-        for (int i = 0; i < progression.length; i++) {
-
-
-            if (i == hiddenIndex) {
-                result += ".. ";
-            } else {
-                result += progression[i] + " ";
-            }
-        }
-        return result.trim();
+        return progression;
     }
 }
+
 
 
 

@@ -57,7 +57,7 @@ public final class Progression {
 
 
             if (i == hiddenIndex) {
-                result += "..";
+                result += ".. ";
             } else {
                 result += progression[i] + " ";
             }

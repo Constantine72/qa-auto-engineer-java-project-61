@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+
 import java.util.Random;
 
 public final class Calc {
@@ -12,9 +13,7 @@ public final class Calc {
         final int roundDigit = 3;
 
         String rules = "What is the result of the expression?";
-
         String[][] rounds = new String[roundDigit][2];
-
 
         for (int i = 0; i < roundDigit; i++) {
 
@@ -37,16 +36,14 @@ public final class Calc {
                     result = randomNumber1 * randomNumber2;
                     break;
                 default:
-                    System.out.println("Unknown operation");
+                    System.out.println("Unknown operation" + operation);
             }
 
-                    String question = randomNumber1 + " " + operation + " " + randomNumber2;
-                    String correctAnswer = String.valueOf(result);
+            String question = randomNumber1 + " " + operation + " " + randomNumber2;
+            String correctAnswer = String.valueOf(result);
 
-                    rounds[i][0] = question;
-                    rounds[i][1] = correctAnswer;
-
-
+            rounds[i][0] = question;
+            rounds[i][1] = correctAnswer;
         }
         Engine.run(rules, rounds);
     }

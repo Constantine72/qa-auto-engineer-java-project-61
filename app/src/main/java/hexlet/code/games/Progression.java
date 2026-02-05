@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+
 import java.util.Random;
 
 public final class Progression {
@@ -53,7 +54,6 @@ public final class Progression {
 
         String result = "";
         for (int i = 0; i < progression.length; i++) {
-
 
 
             if (i == hiddenIndex) {

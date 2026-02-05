@@ -15,6 +15,7 @@ public final class Calc {
 
         String[][] rounds = new String[roundDigit][2];
 
+
         for (int i = 0; i < roundDigit; i++) {
 
             int randomNumber1 = random.nextInt(randomDigit) + 1;
@@ -24,25 +25,32 @@ public final class Calc {
 
             int result = 0;
 
+
             switch (operation) {
-                case '+' -> result = randomNumber1 + randomNumber2;
-                case '-' -> result = randomNumber1 - randomNumber2;
-                case '*' -> result = randomNumber1 * randomNumber2;
-                default -> System.out.println("Unknown operation");
+                case '+':
+                    result = randomNumber1 + randomNumber2;
+                    break;
+                case '-':
+                    result = randomNumber1 - randomNumber2;
+                    break;
+                case '*':
+                    result = randomNumber1 * randomNumber2;
+                    break;
+                default:
+                    System.out.println("Unknown operation");
             }
 
-            String question = randomNumber1 + " " + operation + " " + randomNumber2;
-            String correctAnswer = String.valueOf(result);
+                    String question = randomNumber1 + " " + operation + " " + randomNumber2;
+                    String correctAnswer = String.valueOf(result);
 
-            rounds[i][0] = question;
-            rounds[i][1] = correctAnswer;
+                    rounds[i][0] = question;
+                    rounds[i][1] = correctAnswer;
+
 
         }
-
- Engine.run(rules, rounds);
+        Engine.run(rules, rounds);
+    }
 }
-}
-
 
 
 

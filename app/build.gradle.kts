@@ -25,13 +25,13 @@ plugins {
     repositories {
         mavenCentral()
     }
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(17))
-        }
-    }
+    //java {
+     //   toolchain {
+     //       languageVersion.set(JavaLanguageVersion.of(17))
+       // }
+    //}
 
-    tasks.getByName("run", JavaExec::class) {
-        standardInput = System.`in`
+    //tasks.getByName("run", JavaExec::class) {
+        //standardInput = System.`in`
 
-    }
+   // }

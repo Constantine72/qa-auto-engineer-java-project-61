@@ -1,11 +1,10 @@
 import org.gradle.kotlin.dsl.property
 
 plugins {
-    id("se.patrikerdes.use-latest-versions") version "0.2.19"
-    id("com.github.ben-manes.versions") version "0.41.0"
+    //id("se.patrikerdes.use-latest-versions") version "0.2.19"
+    //id("com.github.ben-manes.versions") version "0.41.0"
     application
     checkstyle
-
     id("org.sonarqube") version "7.2.2.6593"
 }
     sonar {

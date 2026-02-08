@@ -47,12 +47,10 @@ public final class Progression {
 
         String[] progression = new String[progressionLength];
 
-        int current = first;
-
         for (int i = 0; i < progressionLength; i++) {
 
-            progression[i] = String.valueOf(current);
-            current += step;
+            int currentElement = first + i * step;
+            progression[i] = String.valueOf(currentElement);
         }
         return progression;
     }
